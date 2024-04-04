@@ -322,8 +322,8 @@ class ImageSection extends StatelessWidget {
   }
 }
 
-class ListView extends StatelessWidget {
-  const ListView({
+class ListViewSection extends StatelessWidget {
+  const ListViewSection({
     super.key,
     required this.title,
   });
@@ -332,13 +332,12 @@ class ListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Basic List';
 
     return MaterialApp(
       title: title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(title),
+          title: Text(title),
         ),
         body: ListView(
           children: const <Widget>[
@@ -355,6 +354,85 @@ class ListView extends StatelessWidget {
               title: Text('Phone'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class HorizontalListViewSection extends StatelessWidget {
+  const HorizontalListViewSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const title = 'Horizontal List';
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(title),
+        ),
+        body: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          height: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                width: 160,
+                color: Colors.red,
+              ),
+              Container(
+                width: 160,
+                color: Colors.blue,
+              ),
+              Container(
+                width: 160,
+                color: Colors.green,
+              ),
+              Container(
+                width: 160,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 160,
+                color: Colors.orange,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class GridViewSection extends StatelessWidget {
+
+  const GridViewSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const title = 'Grid List';
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(title),
+        ),
+        body: GridView.count(
+          crossAxisCount: 2,
+          children: List.generate(100, (index) {
+            return Center(
+              child: Text(
+                'Item $index',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            );
+          })
         ),
       ),
     );
